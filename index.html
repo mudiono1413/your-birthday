@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ucapan Ulang Tahun Islami</title>
+  <title>Selamat Ulang Tahun</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@400;600;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -326,8 +326,8 @@
       }
     }
 
-    /* Hidden YouTube Player */
-    .youtube-player {
+    /* Hidden Audio Player */
+    .audio-player {
       position: fixed;
       width: 0;
       height: 0;
@@ -363,10 +363,11 @@
   <!-- Background Particles -->
   <div class="particles" id="particles-js"></div>
 
-  <!-- Audio -->
-  <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/07/06/audio_9cf1d88a6a.mp3?filename=serenity-11157.mp3"
-      type="audio/mp3">
+  <!-- Audio Player (hidden) -->
+  <audio id="birthdayAudio" class="audio-player" loop>
+    <!-- Ganti dengan path file MP3 lokal Anda -->
+    <source src="musik/mabruk.mp3" type="audio/mp3">
+    Browser Anda tidak mendukung elemen audio.
   </audio>
 
   <!-- Cover Page -->
@@ -406,14 +407,6 @@
     </div>
   </div>
 
-  <!-- Hidden YouTube Audio Player -->
-  <div class="youtube-player" id="youtubePlayer">
-    <iframe id="youtubeIframe"
-      src="https://www.youtube.com/embed/cO1KJLw0014?enablejsapi=1&controls=0&modestbranding=1&rel=0" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-
   <!-- Script -->
   <script>
     function showContent() {
@@ -433,8 +426,8 @@
       startFlowerEffect();
       startGlitterEffect();
 
-      // Mulai memutar musik
-      playYouTubeMusic();
+      // Mulai memutar musik lokal
+      playLocalMusic();
     }
 
     // Fungsi untuk efek sliding per karakter dengan dukungan HTML
@@ -462,7 +455,7 @@
         },
         {
           id: 'dua',
-          text: 'Doa saya menyertai anti,<br /> Insya Allah.',
+          text: 'Semoga Allah SWT senantiasa membimbing anti di setiap langkah, melapangkan dada dalam ketaatan, memudahkan segala urusan, dan menganugerahkan kebahagiaan dunia akhirat. Aamiin ya Rabbal \'alamin.',
           delay: 4000
         },
         {
@@ -606,47 +599,38 @@
       }, duration * 1000);
     }
 
+    // Fungsi untuk memutar musik lokal
+    function playLocalMusic() {
+      const audio = document.getElementById('birthdayAudio');
+      audio.play().catch(e => {
+        console.log('Autoplay prevented:', e);
+        // Tampilkan tombol play jika autoplay diblokir
+        const playButton = document.createElement('button');
+        playButton.innerHTML = '<i class="fas fa-play"></i> Putar Musik';
+        playButton.style.position = 'fixed';
+        playButton.style.bottom = '20px';
+        playButton.style.right = '20px';
+        playButton.style.padding = '10px 15px';
+        playButton.style.background = '#bfa14d';
+        playButton.style.color = 'white';
+        playButton.style.border = 'none';
+        playButton.style.borderRadius = '20px';
+        playButton.style.cursor = 'pointer';
+        playButton.style.zIndex = '100';
+        playButton.onclick = function () {
+          audio.play();
+          playButton.remove();
+        };
+        document.body.appendChild(playButton);
+      });
+    }
+
     // Buat beberapa hati mengambang saat halaman dimuat
     window.onload = function () {
       for (let i = 0; i < 5; i++) {
         setTimeout(createFloatingHearts, i * 1500);
       }
     };
-
-    // Fungsi untuk memutar musik YouTube
-    function playYouTubeMusic() {
-      const iframe = document.getElementById('youtubeIframe');
-      iframe.src += "&autoplay=1";
-
-      // Untuk loop musik (bekerja setelah video dimulai)
-      setTimeout(() => {
-        iframe.src += "&loop=1&playlist=cO1KJLw0014";
-      }, 1000);
-    }
-
-    // Load YouTube IFrame API
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('youtubeIframe', {
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    function onPlayerReady(event) {
-      // Player siap, tapi tidak langsung diputar
-    }
-
-    function onPlayerStateChange(event) {
-      // Untuk handle perubahan state jika diperlukan
-    }
   </script>
 
   <!-- Particles JS -->

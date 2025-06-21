@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ucapan Ulang Tahun Islami</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@400;600;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(to right, #fffaf0, #f5f5f5);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .cover,
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: white;
+      transition: all 1s ease;
+      padding: 20px;
+    }
+
+    .cover {
+      background: linear-gradient(to bottom right, #fffbe6, #fdf9f2);
+      z-index: 3;
+      perspective: 1000px;
+    }
+
+    .cover-inner {
+      text-align: center;
+      max-width: 500px;
+      transition: transform 1s ease;
+      position: relative;
+      z-index: 4;
+    }
+
+    .cover.active {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .cover.active .cover-inner {
+      transform: rotateY(180deg) scale(0.5);
+    }
+
+    .cover h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(40px, 8vw, 60px);
+      color: #bfa14d;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .cover .name {
+      font-size: clamp(24px, 5vw, 32px);
+      color: #a88d3e;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .cover button {
+      padding: 12px 28px;
+      background: #bfa14d;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover button:hover {
+      background: #a88d3e;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .cover button:after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(30deg);
+      transition: all 0.3s;
+    }
+
+    .cover button:hover:after {
+      left: 100%;
+    }
+
+    .content {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .content.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 90%;
+      background: white;
+      padding: clamp(20px, 5vw, 50px);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      border: 3px solid #d4af37;
+      animation: fadeIn 1.5s ease;
+      position: relative;
+      z-index: 2;
+      margin: 20px;
+      background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    }
+
+    h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(36px, 7vw, 48px);
+      text-align: center;
+      color: #bfa14d;
+      margin-bottom: 10px;
+    }
+
+    .date {
+      text-align: center;
+      font-size: clamp(16px, 3vw, 18px);
+      color: #999;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: clamp(16px, 3vw, 18px);
+      line-height: 1.8;
+      color: #444;
+      text-align: justify;
+      margin-bottom: 15px;
+    }
+
+    .dua {
+      text-align: center;
+      font-style: italic;
+      font-size: clamp(14px, 3vw, 16px);
+      color: #666;
+      margin-top: 30px;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Efek Bunga Jatuh */
+    .flower {
+      position: fixed;
+      top: -10%;
+      z-index: 5;
+      color: #e6c65c;
+      font-size: 20px;
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+      animation: falling linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes falling {
+      0% {
+        transform: translate(0, -10%) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translate(var(--end-x), 110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Dekorasi Sudut */
+    .corner {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      z-index: 1;
+    }
+
+    .corner i {
+      font-size: 40px;
+      color: rgba(191, 161, 77, 0.2);
+    }
+
+    .top-left {
+      top: 10px;
+      left: 10px;
+    }
+
+    .top-right {
+      top: 10px;
+      right: 10px;
+      transform: rotate(90deg);
+    }
+
+    .bottom-left {
+      bottom: 10px;
+      left: 10px;
+      transform: rotate(-90deg);
+    }
+
+    .bottom-right {
+      bottom: 10px;
+      right: 10px;
+      transform: rotate(180deg);
+    }
+
+    /* Efek Glitter */
+    .glitter {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: gold;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: glitter 2s infinite;
+      opacity: 0;
+    }
+
+    @keyframes glitter {
+      0% {
+        transform: scale(0.3);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(0.3);
+        opacity: 0;
+      }
+    }
+
+    /* Heart Floating */
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: #ff6b6b;
+      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(10deg);
+      }
+    }
+
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+
+      p {
+        text-align: left;
+      }
+
+      .corner i {
+        font-size: 30px;
+      }
+    }
+
+    /* Hidden YouTube Player */
+    .youtube-player {
+      position: fixed;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    /* Efek Sliding Per Karakter */
+    .text-container {
+      overflow: hidden;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideIn 0.3s ease forwards;
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Particles -->
+  <div class="particles" id="particles-js"></div>
+
+  <!-- Audio -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/07/06/audio_9cf1d88a6a.mp3?filename=serenity-11157.mp3"
+      type="audio/mp3">
+  </audio>
+
+  <!-- Cover Page -->
+  <div class="cover" id="cover">
+    <div class="cover-inner">
+      <!-- Dekorasi Sudut -->
+      <div class="corner top-left">
+        <i class="fas fa-leaf"></i>
+      </div>
+      <div class="corner top-right">
+        <i class="fas fa-leaf"></i>
+      </div>
+      <div class="corner bottom-left">
+        <i class="fas fa-leaf"></i>
+      </div>
+      <div class="corner bottom-right">
+        <i class="fas fa-leaf"></i>
+      </div>
+
+      <h1>Selamat Ulang Tahun</h1>
+      <div class="name">Untuk Dita Havinamega</div>
+      <button onclick="showContent()">
+        <i class="fas fa-gift" style="margin-right: 8px;"></i> Buka Ucapan
+      </button>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content" id="content">
+    <div class="container">
+      <h2 id="title" class="text-container"></h2>
+      <div class="date text-container" id="date"></div>
+      <p id="paragraph1" class="text-container"></p>
+      <p id="paragraph2" class="text-container"></p>
+      <div class="dua text-container" id="dua"></div>
+      <footer id="footer" class="text-container"></footer>
+    </div>
+  </div>
+
+  <!-- Hidden YouTube Audio Player -->
+  <div class="youtube-player" id="youtubePlayer">
+    <iframe id="youtubeIframe"
+      src="https://www.youtube.com/embed/cO1KJLw0014?enablejsapi=1&controls=0&modestbranding=1&rel=0" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function showContent() {
+      const cover = document.getElementById("cover");
+      const content = document.getElementById("content");
+
+      // Efek membuka jendela
+      cover.classList.add("active");
+
+      // Tampilkan konten setelah efek selesai
+      setTimeout(() => {
+        content.classList.add("active");
+        startSlidingEffect();
+      }, 500);
+
+      // Mulai efek bunga jatuh
+      startFlowerEffect();
+      startGlitterEffect();
+
+      // Mulai memutar musik
+      playYouTubeMusic();
+    }
+
+    // Fungsi untuk efek sliding per karakter dengan dukungan HTML
+    function startSlidingEffect() {
+      const elements = [
+        {
+          id: 'title',
+          text: 'Barakallahu fii umrik',
+          delay: 0
+        },
+        {
+          id: 'date',
+          text: '25 Juni 2025',
+          delay: 1000
+        },
+        {
+          id: 'paragraph1',
+          text: 'Semoga Allah SWT melimpahkan keberkahan dalam setiap detik usia anti yang baru, wahai wanita shalihah. Semoga engkau senantiasa dalam lindungan-Nya, diberi umur panjang, kesehatan, rezeki yang berkah, serta jalan yang lurus menuju surga-Nya.',
+          delay: 1500
+        },
+        {
+          id: 'paragraph2',
+          text: 'Pada hari yang penuh makna ini, semoga setiap harapan anti dikabulkan dalam waktu terbaik menurut-Nya. Jadilah wanita yang selalu menginspirasi dalam kebaikan dan taat kepada Allah SWT.',
+          delay: 3000
+        },
+        {
+          id: 'dua',
+          text: 'Doa saya menyertai anti,<br /> Insya Allah.',
+          delay: 4000
+        },
+        {
+          id: 'footer',
+          text: '© 2025 - Dibuat dengan <i class="fas fa-heart" style="color: #ff6b6b;"></i>',
+          delay: 5000
+        }
+      ];
+
+      elements.forEach(element => {
+        const el = document.getElementById(element.id);
+        el.innerHTML = ''; // Kosongkan konten awal
+
+        // Buat elemen sementara untuk parsing HTML
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = element.text;
+
+        // Kumpulkan semua node (teks dan elemen HTML)
+        const nodes = [];
+        tempDiv.childNodes.forEach(node => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            // Pecah teks menjadi karakter
+            node.textContent.split('').forEach(char => {
+              nodes.push({ type: 'text', content: char });
+            });
+          } else if (node.nodeType === Node.ELEMENT_NODE) {
+            // Simpan elemen HTML (misalnya <br>, <i>)
+            nodes.push({ type: 'element', content: node.outerHTML });
+          }
+        });
+
+        // Tambahkan setiap node dengan efek sliding
+        nodes.forEach((node, index) => {
+          const span = document.createElement('span');
+          span.classList.add('char');
+          span.style.animationDelay = `${element.delay + index * 50}ms`;
+
+          if (node.type === 'text') {
+            span.innerHTML = node.content === ' ' ? '&nbsp;' : node.content;
+          } else {
+            span.innerHTML = node.content;
+          }
+
+          el.appendChild(span);
+        });
+      });
+    }
+
+    // Fungsi untuk efek bunga jatuh
+    function startFlowerEffect() {
+      const flowers = ['🌸', '🌹', '🌺', '🌻', '🌼', '🌷', '💐', '🏵️'];
+
+      setInterval(() => {
+        const flower = document.createElement('div');
+        flower.classList.add('flower');
+        flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+
+        // Posisi awal acak
+        const startX = Math.random() * window.innerWidth;
+        flower.style.left = startX + 'px';
+
+        // Posisi akhir acak (maksimal 200px dari posisi awal)
+        const endX = (Math.random() * 400 - 200);
+        flower.style.setProperty('--end-x', endX + 'px');
+
+        // Kecepatan jatuh acak
+        const duration = 5 + Math.random() * 10;
+        flower.style.animationDuration = duration + 's';
+
+        // Ukuran acak
+        const size = 20 + Math.random() * 30;
+        flower.style.fontSize = size + 'px';
+
+        document.body.appendChild(flower);
+
+        // Hapus elemen setelah animasi selesai
+        setTimeout(() => {
+          flower.remove();
+        }, duration * 1000);
+      }, 300);
+    }
+
+    // Fungsi untuk efek glitter
+    function startGlitterEffect() {
+      setInterval(() => {
+        const glitter = document.createElement('div');
+        glitter.classList.add('glitter');
+
+        // Posisi acak di sekitar container
+        const container = document.querySelector('.container');
+        const containerRect = container.getBoundingClientRect();
+
+        const x = containerRect.left + Math.random() * containerRect.width;
+        const y = containerRect.top + Math.random() * containerRect.height;
+
+        glitter.style.left = x + 'px';
+        glitter.style.top = y + 'px';
+
+        // Warna acak
+        const colors = ['#FFD700', '#FFA500', '#FF6B6B', '#BFa14d', '#E6C65C'];
+        glitter.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+        // Delay animasi acak
+        glitter.style.animationDelay = Math.random() * 2 + 's';
+
+        document.body.appendChild(glitter);
+
+        // Hapus elemen setelah animasi selesai
+        setTimeout(() => {
+          glitter.remove();
+        }, 2000);
+      }, 200);
+    }
+
+    // Fungsi untuk efek hati mengambang
+    function createFloatingHearts() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+
+      // Posisi acak
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+
+      heart.style.left = x + 'px';
+      heart.style.top = y + 'px';
+
+      // Ukuran acak
+      const size = 15 + Math.random() * 25;
+      heart.style.fontSize = size + 'px';
+
+      // Durasi animasi acak
+      const duration = 3 + Math.random() * 6;
+      heart.style.animationDuration = duration + 's';
+
+      document.body.appendChild(heart);
+
+      // Hapus elemen setelah animasi selesai
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+
+    // Buat beberapa hati mengambang saat halaman dimuat
+    window.onload = function () {
+      for (let i = 0; i < 5; i++) {
+        setTimeout(createFloatingHearts, i * 1500);
+      }
+    };
+
+    // Fungsi untuk memutar musik YouTube
+    function playYouTubeMusic() {
+      const iframe = document.getElementById('youtubeIframe');
+      iframe.src += "&autoplay=1";
+
+      // Untuk loop musik (bekerja setelah video dimulai)
+      setTimeout(() => {
+        iframe.src += "&loop=1&playlist=cO1KJLw0014";
+      }, 1000);
+    }
+
+    // Load YouTube IFrame API
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtubeIframe', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      // Player siap, tapi tidak langsung diputar
+    }
+
+    function onPlayerStateChange(event) {
+      // Untuk handle perubahan state jika diperlukan
+    }
+  </script>
+
+  <!-- Particles JS -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 50 },
+        size: { value: 2 },
+        color: { value: "#d4af37" },
+        line_linked: {
+          enable: true,
+          distance: 120,
+          color: "#e6c65c",
+          opacity: 0.4,
+          width: 1
+        },
+        move: { speed: 0.8 }
+      }
+    });
+  </script>
+</body>
+
+</html>

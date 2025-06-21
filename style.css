@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #f5f5f5, #fffaf0);
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .cover {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fffbe6;
+    z-index: 2;
+  }
+  
+  .cover h1 {
+    font-size: 42px;
+    text-align: center;
+    color: #bfa14d;
+    margin-bottom: 20px;
+  }
+  
+  .cover button {
+    padding: 12px 28px;
+    background: #bfa14d;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border: 3px solid #e6c65c;
+  }
+  
+  .card h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #bfa14d;
+  }
+  
+  .card p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .doa {
+    font-style: italic;
+    text-align: center;
+    margin-top: 30px;
+    color: #555;
+  }
+  
+  /* Animasi jendela */
+  .window {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: #fffbe6;
+    z-index: 3;
+    transition: transform 1s ease;
+  }
+  
+  .window.top {
+    top: 0;
+    transform-origin: top;
+  }
+  
+  .window.bottom {
+    bottom: 0;
+    transform-origin: bottom;
+  }
+  
+  .window.open {
+    transform: scaleY(0);
+  }
+  
